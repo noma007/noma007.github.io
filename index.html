@@ -4,130 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlphaTrading | Forex EA & Financial Analysis</title>
-    <!-- Tailwind CSS Dynamic CDN -->
-    <script src="https://tailwindcss.com"></
+    <!-- เรียกลิงก์หาไฟล์ CSS โดยตรง ปลอดภัย ไม่ผ่าน CDN นอก -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        .carousel-item { display: none; }
-        .carousel-item.active { display: block; }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body>
 
     <!-- NAVIGATION BAR -->
-    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-chart-line text-amber-500 text-2xl"></i>
-                    <span class="text-xl font-bold tracking-wider">ALPHA<span class="text-amber-500">TRADING</span></span>
-                </div>
-                <div class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="#" class="text-amber-500">หน้าแรก</a>
-                    <a href="#products" class="hover:text-amber-400 transition">ระบบ EA & สินค้า</a>
-                    <a href="#blog" class="hover:text-amber-400 transition">บทความวิเคราะห์</a>
-                    <a href="#about" class="hover:text-amber-400 transition">เกี่ยวกับเรา</a>
-                </div>
-                <div>
-                    <a href="#products" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-4 py-2 rounded-md text-sm font-bold transition shadow">ดูระบบ EA ทั้งหมด</a>
-                </div>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <i class="fa-solid fa-chart-line"></i>
+                ALPHA<span>TRADING</span>
+            </a>
+            <div class="nav-links">
+                <a href="#" class="active">หน้าแรก</a>
+                <a href="#products">ระบบ EA & สินค้า</a>
+                <a href="blog.html">บทความวิเคราะห์</a>
+                <a href="waiting-list.html">ลงทะเบียน</a>
+            </div>
+            <div>
+                <a href="#products" class="btn-gold">ดูระบบ EA ทั้งหมด</a>
             </div>
         </div>
     </nav>
 
-    <!-- 1. AUTO CAROUSEL SLIDESHOW (สไลด์ด้านบนเปลี่ยนหน้าเอง) -->
-    <div class="relative overflow-hidden bg-slate-800 text-white h-[450px]">
+    <!-- 1. AUTO CAROUSEL SLIDESHOW -->
+    <div class="hero-slider">
         <!-- Slide 1 -->
-        <div class="carousel-item active fade-in absolute inset-0 bg-cover bg-center bg-blend-multiply bg-slate-700" style="background-image: url('https://unsplash.com');">
-            <div class="max-w-7xl mx-auto px-4 h-full flex flex-col justify-center items-start">
-                <span class="bg-amber-500 text-slate-950 text-xs uppercase font-extrabold px-2.5 py-1 roundedmb-4 shadow">New Release</span>
-                <h1 class="text-4xl md:text-5xl font-black max-w-2xl leading-tight mb-4">ระบบเทรดอัตโนมัติ <span class="text-amber-400">Next-Gen EA</span> สำหรับ XAUUSD</h1>
-                <p class="text-gray-300 text-lg max-w-xl mb-6">บริหารความเสี่ยงอัจฉริยะ ผ่านการทดสอบ Backtest ย้อนหลัง 10 ปี มั่นคง ปลอดภัย ควบคุม Drawdown ต่ำ</p>
-                <a href="#products" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-md transition shadow-lg transform hover:-translate-y-0.5">ทดลองใช้งานฟรี</a>
+        <div class="carousel-item active" style="background-image: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)), url('https://unsplash.com');">
+            <div class="slider-content">
+                <span class="badge">New Release</span>
+                <h1>ระบบเทรดอัตโนมัติ <span>Next-Gen EA</span> สำหรับ XAUUSD</h1>
+                <p>บริหารความเสี่ยงอัจฉริยะ ผ่านการทดสอบ Backtest ย้อนหลัง 10 ปี มั่นคง ปลอดภัย ควบคุม Drawdown ต่ำ</p>
+                <a href="#products" class="btn-gold" style="padding: 12px 24px;">ทดลองใช้งานฟรี</a>
             </div>
         </div>
         <!-- Slide 2 -->
-        <div class="carousel-item absolute inset-0 bg-cover bg-center bg-blend-multiply bg-slate-700" style="background-image: url('https://unsplash.com');">
-            <div class="max-w-7xl mx-auto px-4 h-full flex flex-col justify-center items-start">
-                <span class="bg-blue-500 text-white text-xs uppercase font-extrabold px-2.5 py-1 rounded mb-4 shadow">Market Analysis</span>
-                <h1 class="text-4xl md:text-5xl font-black max-w-2xl leading-tight mb-4">วิเคราะห์แนวโน้มตลาด <span class="text-blue-400">Forex รายวัน</span></h1>
-                <p class="text-gray-300 text-lg max-w-xl mb-6">อัปเดตบทวิเคราะห์เชิงเทคนิคอลโครงสร้างราคา Wave และสถิติสัดส่วนนัยสำคัญเพื่อการตัดสินใจที่แม่นยำ</p>
-                <a href="#blog" class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-md transition shadow-lg transform hover:-translate-y-0.5">อ่านบทวิเคราะห์วันนี้</a>
+        <div class="carousel-item" style="background-image: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)), url('https://unsplash.com');">
+            <div class="slider-content">
+                <span class="badge" style="background-color: #3b82f6; color: white;">Market Analysis</span>
+                <h1>วิเคราะห์แนวโน้มตลาด <span>Forex รายวัน</span></h1>
+                <p>อัปเดตบทวิเคราะห์เชิงเทคนิคอลโครงสร้างราคา Wave และสถิติสัดส่วนนัยสำคัญเพื่อการตัดสินใจที่แม่นยำ</p>
+                <a href="blog.html" class="btn-blue">อ่านบทวิเคราะห์วันนี้</a>
             </div>
         </div>
     </div>
 
-    <!-- 3. PRODUCT MENU (เมนูสินค้าเกี่ยวกับบริษัท/EA) -->
-    <section id="products" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-slate-900">ระบบเทรดอัจฉริยะ (Our Products)</h2>
-            <p class="text-gray-600 mt-2">เลือกเครื่องมือและระบบเทรดอัตโนมัติที่เหมาะสมกับสไตล์การลงทุนของคุณ</p>
+    <!-- 3. PRODUCT MENU -->
+    <section id="products" class="section-padding">
+        <div class="section-title">
+            <h2>ระบบเทรดอัจฉริยะ (Our Products)</h2>
+            <p>เลือกเครื่องมือและระบบเทรดอัตโนมัติที่เหมาะสมกับสไตล์การลงทุนของคุณ</p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Product Card 1 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 overflow-hidden flex flex-col">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-4"><i class="fa-solid fa-bolt"></i></div>
-                    <h3 class="text-xl font-bold text-slate-950 mb-2">Alpha Scalper EA</h3>
-                    <p class="text-gray-600 text-sm mb-4 flex-grow">เน้นเก็บกำไรระยะสั้นในกรอบ Sideway ทำงานบนคู่เงินหลัก EURUSD, GBPUSD พร้อมระบบจำกัดขาดทุนอัตโนมัติ</p>
-                    <div class="border-t border-gray-100 pt-4 mt-auto flex items-center justify-between">
-                        <span class="text-sm text-gray-500">ความเสี่ยง: ปานกลาง</span>
-                        <span class="text-lg font-extrabold text-slate-900">Free / Partner</span>
-                    </div>
+        <div class="product-grid">
+            <!-- Card 1 -->
+            <div class="product-card">
+                <div class="product-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Alpha Scalper EA</h3>
+                <p>เน้นเก็บกำไรระยะสั้นในกรอบ Sideway ทำงานบนคู่เงินหลัก EURUSD, GBPUSD พร้อมระบบจำกัดขาดทุนอัตโนมัติ</p>
+                <div class="product-footer">
+                    <span style="color: #64748b;">ความเสี่ยง: ปานกลาง</span>
+                    <span class="price">Free / Partner</span>
                 </div>
             </div>
-            <!-- Product Card 2 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 overflow-hidden flex flex-col">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-4"><i class="fa-solid fa-gem"></i></div>
-                    <h3 class="text-xl font-bold text-slate-950 mb-2">Gold Hunter Pro</h3>
-                    <p class="text-gray-600 text-sm mb-4 flex-grow">EA สำหรับคำนวณหน้าเทรด XAUUSD โดยเฉพาะ ใช้ระบบ Trend Following ร่วมกับแนวรับแนวต้านสำคัญ</p>
-                    <div class="border-t border-gray-100 pt-4 mt-auto flex items-center justify-between">
-                        <span class="text-sm text-gray-500">ความเสี่ยง: ค่อนข้างสูง</span>
-                        <span class="text-lg font-extrabold text-amber-600">$199 / ปี</span>
-                    </div>
+            <!-- Card 2 -->
+            <div class="product-card">
+                <div class="product-icon"><i class="fa-solid fa-gem"></i></div>
+                <h3>Gold Hunter Pro</h3>
+                <p>EA สำหรับคำนวณหน้าเทรด XAUUSD โดยเฉพาะ ใช้ระบบ Trend Following ร่วมกับแนวรับแนวต้านสำคัญ</p>
+                <div class="product-footer">
+                    <span style="color: #64748b;">ความเสี่ยง: ค่อนข้างสูง</span>
+                    <span class="price" style="color: #d97706;">$199 / ปี</span>
                 </div>
             </div>
-            <!-- Product Card 3 -->
-            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 overflow-hidden flex flex-col">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 text-xl font-bold mb-4"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="text-xl font-bold text-slate-950 mb-2">Grid Smart Hedging</h3>
-                    <p class="text-gray-600 text-sm mb-4 flex-grow">ระบบคุมพอร์ตกระจายออเดอร์พร้อมฟังก์ชัน Hedging แก้ไขพอร์ตอัตโนมัติเมื่อเกิดเหตุสภาวะตลาดผันผวนรุนแรง</p>
-                    <div class="border-t border-gray-100 pt-4 mt-auto flex items-center justify-between">
-                        <span class="text-sm text-gray-500">ความเสี่ยง: ต่ำ</span>
-                        <span class="text-lg font-extrabold text-slate-900">$299 / ถาวร</span>
-                    </div>
+            <!-- Card 3 -->
+            <div class="product-card">
+                <div class="product-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Grid Smart Hedging</h3>
+                <p>ระบบคุมพอร์ตกระจายออเดอร์พร้อมฟังก์ชัน Hedging แก้ไขพอร์ตอัตโนมัติเมื่อเกิดเหตุสภาวะตลาดผันผวนรุนแรง</p>
+                <div class="product-footer">
+                    <span style="color: #64748b;">ความเสี่ยง: ต่ำ</span>
+                    <span class="price">$299 / ถาวร</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. POST & COMMENTS SECTION (หน้าโพสต์วิเคราะห์ + แสดงความคิดเห็น) -->
-    <main id="blog" class="bg-gray-100 py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <!-- Main Post Container -->
-            <article class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200/60 mb-8">
-                <div class="flex items-center space-x-3 mb-4">
-                    <span class="bg-slate-900 text-white text-xs font-bold px-2.5 py-1 rounded">มุมมองเชิงเทคนิค</span>
-                    <span class="text-gray-500 text-sm"><i class="fa-regular fa-calendar-days mr-1"></i> วันนี้, 08:30 น.</span>
-                </div>
-                <h2 class="text-2xl md:text-3xl font-black text-slate-950 mb-4">มุมมองทางเทคนิค XAUUSD: ภาพรวมตลาดยังรักษาแนวโน้มหลักได้ไหม?</h2>
-                <div class="text-gray-700 leading-relaxed space-y-4 mb-6">
-                    <p>ในภาพรวมของ<strong>ไทม์เฟรม Day</strong> แนวโน้มหลักยังคงรักษารูปแบบทิศทางขาขึ้นไว้ได้ชัดเจน แต่อาจมีโอกาสเห็นการปรับฐานลึกเพื่อสะสมแรงในการปรับตัวขึ้นต่อ ปัจจุบันราคามีการกดตัวลงทำแท่งแดง โดยเนื้อเทียนลงต่ำกว่าไส้เทียนของแท่งก่อนหน้า ทว่าเมื่อทดสอบบริเวณโซนสำคัญแถว <strong>4250</strong> เริ่มมีแรงรีบาวด์ยกตัวขึ้นกลับมา</p>
-                    <p class="font-bold text-slate-900">จุดที่น่าจับตามองในระยะกลาง-สั้น:</p>
-                    <ul class="list-disc pl-5 space-y-1 text-gray-600">
-                        <li>โซนแถว <strong>4165</strong> มีความใกล้เคียงกับระดับสัดส่วน Fibonacci 78.6% ซึ่งถือเป็นโซนรองรับสำคัญ</li>
-                        <li>หากมีการพักตัวต่อเนื่อง มีโอกาสลงไปทดสอบโซนเป้าหมายถัดไปบริเวณ <strong>4100</strong> ก่อนจะฟื้นตัว</li>
-                    </ul>
-                </div>
-                <!-- Engagement tags -->
-                <div class="border-t border-b border-gray-100 py-3 flex items-center justify-between text-gray-500 text-sm">
-                    <div class="flex space-x-6">
-                        <button class="hover:text-amber-600 font-medium transition cursor-pointer"><i class="fa-regular fa-thumbs-up mr-1"></i> ถูกใจ (24)</button>
-                        <button class="hover:text-amber-600 font-medium transition cursor-pointer"><i class="fa-regular fa-comment mr-1"></i> ความคิดเห็น (<span id="comment-count">1</span>)</button>
-                    </div>
+    <!-- FOOTER WITH DISCLAIMER -->
+    <footer>
+        <div class="footer-container">
+            <div class="risk-box">
+                <span><i class="fa-solid fa-triangle-exclamation"></i> คำเตือนความเสี่ยง (Risk Disclaimer):</span>
+                การซื้อขายผลิตภัณฑ์ทางการเงินและตราสารอนุพันธ์ (Forex / Gold / CFDs) มีความเสี่ยงสูงและอาจไม่เหมาะกับนักลงทุนทุกคน ข้อมูลและบทวิเคราะห์บนเว็บไซต์นี้เป็นเพียงความเห็นและสถิติเชิงเทคนิคส่วนบุคคลเพื่อแบ่งปันไอเดียเท่านั้น ไม่ถือเป็นคำชี้ชวน คัดเลือก หรือคำแนะนำในการลงทุน
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AlphaTrading. All rights reserved. โฮสต์ระบบอย่างปลอดภัยบน GitHub</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- เรียกสคริปต์สไลด์ท้ายเว็บ -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>
+
 
 
