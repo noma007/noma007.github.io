@@ -4,73 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>บทวิเคราะห์และบทความการลงทุน | AlphaTrading</title>
-    <script src="https://jsdelivr.net"></script>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <!-- ฝัง CSS โดยตรงในตัวไฟล์เพื่อแก้ปัญหาเรื่องการดึงโฟลเดอร์ไม่เจอ -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: #0f172a;
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand span { color: #f59e0b; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #fbbf24; }
+        .nav-links a.active { color: #f59e0b; }
+        
+        .header-section {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 64px 16px;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 2.25rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .header-section p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 48px auto;
+            padding: 0 16px;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .article-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .card-body {
+            padding: 24px;
+            flex-grow: 1;
+        }
+        .badge {
+            background-color: #fef3c7;
+            color: #d97706;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .badge-blue {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+        }
+        .card-body h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .card-body h2 a {
+            color: #0f172a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .card-body h2 a:hover {
+            color: #f59e0b;
+        }
+        .card-body p {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+        .card-footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #f1f5f9;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.825rem;
+            color: #64748b;
+        }
+        .read-more {
+            color: #f59e0b;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            padding: 48px 16px;
+            border-top: 1px solid #1e293b;
+            margin-top: 80px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .risk-box {
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .risk-box span { color: #f59e0b; font-weight: 700; }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .header-section h1 { font-size: 1.75rem; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body>
 
-    <!-- NAV BAR -->
-    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-chart-line text-amber-500 text-2xl"></i>
-                <a href="index.html" class="text-xl font-bold tracking-wider">ALPHA<span class="text-amber-500">TRADING</span></a>
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="index.html" class="hover:text-amber-400 transition">หน้าแรก</a>
-                <a href="index.html#products" class="hover:text-amber-400 transition">ระบบ EA & สินค้า</a>
-                <a href="blog.html" class="text-amber-500">บทความวิเคราะห์</a>
-                <a href="waiting-list.html" class="hover:text-amber-400 transition">ลงทะเบียน</a>
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <i class="fa-solid fa-chart-line"></i>
+                ALPHA<span>TRADING</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="index.html#products">ระบบ EA & สินค้า</a>
+                <a href="blog.html" class="active">บทความวิเคราะห์</a>
+                <a href="waiting-list.html">ลงทะเบียน</a>
             </div>
         </div>
     </nav>
 
     <!-- HEADER SECTION -->
-    <header class="bg-slate-800 text-white py-12 text-center">
-        <h1 class="text-3xl font-black mb-2">Market Insights & Technical Analysis</h1>
-        <p class="text-gray-400 text-sm">คลังบทความ ข้อมูลสถิติ และบทวิเคราะห์แนวโน้มตลาดการเงินรายวัน</p>
+    <header class="header-section">
+        <h1>Market Insights & Technical Analysis</h1>
+        <p>คลังบทความ ข้อมูลสถิติ และบทวิเคราะห์แนวโน้มตลาดการเงินรายวัน</p>
     </header>
 
-    <!-- BLOG LIST -->
-    <main class="max-w-6xl mx-auto px-4 py-12">
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Article Card 1 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                <div class="p-6 flex-grow">
-                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">XAUUSD</span>
-                    <h2 class="text-lg font-bold text-slate-950 mt-3 mb-2 hover:text-amber-600 transition">
-                        <a href="post-xauusd.html">วิเคราะห์แนวโน้มทองคำประจำวัน: ลุ้นทดสอบแนวรับสำคัญ</a>
-                    </h2>
-                    <p class="text-gray-600 text-xs line-clamp-3 mb-4">สรุปโครงสร้างราคาไทม์เฟรม Day และ H1 ประเมินกรอบราคาก่อนเลือกทิศทางสะสมแรง...</p>
+    <!-- MAIN BLOG LIST -->
+    <main class="main-container">
+        <div class="grid-layout">
+            
+            <!-- การ์ดบทความที่ 1 (ทองคำ XAUUSD) -->
+            <div class="article-card">
+                <div class="card-body">
+                    <span class="badge">XAUUSD</span>
+                    <h2><a href="post-xauusd.html">วิเคราะห์แนวโน้มทองคำประจำวัน: ภาพรวมตลาดยังรักษาแนวโน้มหลักได้ไหม?</a></h2>
+                    <p>สรุปโครงสร้างราคาไทม์เฟรม Day และ H1 ประเมินกรอบราคาก่อนเลือกทิศทางสะสมแรงอย่างมีนัยสำคัญ...</p>
                 </div>
-                <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center text-xs text-gray-500">
+                <div class="card-footer">
                     <span>20 ต.ค. 2569</span>
-                    <a href="post-xauusd.html" class="text-amber-600 font-bold hover:underline">อ่านต่อ <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    <a href="post-xauusd.html" class="read-more">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
             
-            <!-- Article Card 2 (จำลองบทความให้ความรู้เรื่อง EA) -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                <div class="p-6 flex-grow">
-                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded">ความรู้ EA</span>
-                    <h2 class="text-lg font-bold text-slate-950 mt-3 mb-2">วิธีบริหารความเสี่ยง (Risk Management) เมื่อเปิดรันบอตเทรดทองคำ</h2>
-                    <p class="text-gray-600 text-xs line-clamp-3 mb-4">เจาะลึกการคำนวณค่า Drawdown และการตั้งค่า Lot Size ให้เหมาะสมกับเงินทุนเพื่อความยั่งยืน...</p>
+            <!-- การ์ดบทความที่ 2 (ความรู้ EA) -->
+            <div class="article-card">
+                <div class="card-body">
+                    <span class="badge badge-blue">ความรู้ EA</span>
+                    <h2>วิธีบริหารความเสี่ยง (Risk Management) เมื่อเปิดรันบอตเทรดทองคำ</h2>
+                    <p>เจาะลึกการคำนวณค่า Drawdown และการตั้งค่าขนาดสัญญา Lot Size ให้เหมาะสมกับเงินทุนเพื่อความยั่งยืนของพอร์ต...</p>
                 </div>
-                <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center text-xs text-gray-500">
+                <div class="card-footer">
                     <span>18 ต.ค. 2569</span>
-                    <span class="text-gray-400">เร็วๆ นี้</span>
+                    <span style="color: #94a3b8; font-weight: bold;">เร็วๆ นี้</span>
                 </div>
             </div>
+            
         </div>
     </main>
 
     <!-- FOOTER WITH DISCLAIMER -->
-    <footer class="bg-slate-900 text-gray-400 text-xs py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
-            <p class="text-gray-500">การลงทุนมีความเสี่ยง ข้อมูลนี้เป็นเพียงสถิติเชิงเทคนิคส่วนบุคคลเพื่อแบ่งปันไอเดียเท่านั้น</p>
-            <p>&copy; 2026 AlphaTrading. All rights reserved.</p>
+    <footer>
+        <div class="footer-container">
+            <div class="risk-box">
+                <span><i class="fa-solid fa-triangle-exclamation"></i> คำเตือนความเสี่ยง (Risk Disclaimer):</span>
+                การซื้อขายตราสารอนุพันธ์ (Forex / Gold) มีความเสี่ยงสูง ข้อมูลและบทวิเคราะห์บนเว็บไซต์นี้เป็นเพียงความเห็นและสถิติเชิงเทคนิคส่วนบุคคลเพื่อแบ่งปันไอเดียเท่านั้น ไม่ถือเป็นคำชี้ชวนลงทุน ผลลัพธ์ในอดีตไม่สามารถการันตีอนาคตได้
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AlphaTrading. All rights reserved. โฮสต์บน GitHub</p>
+            </div>
         </div>
     </footer>
+
 </body>
 </html>
+
 
