@@ -1,1 +1,50 @@
+/* -----------------------------------------------
+   AlphaTrading Custom Style Stylesheet
+----------------------------------------------- */
+
+/* คลาสตั้งต้นสำหรับเปิด-ปิดหน้าสไลด์แบนเนอร์ */
+.carousel-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-item.active {
+    display: block;
+    opacity: 1;
+}
+
+/* เอฟเฟกต์แอนิเมชันค่อยๆ โผล่ขึ้นมา (Fade In) */
+.fade-in {
+    animation: fadeInEffect 0.6s ease-out forwards;
+}
+
+@keyframes fadeInEffect {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ตกแต่งแถบเลื่อน (Scrollbar) ของบราวเซอร์ให้ดูเรียบหรูสีกรมท่า */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a; /* Slate 900 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155; /* Slate 700 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f59e0b; /* Amber 500 */
+}
 
