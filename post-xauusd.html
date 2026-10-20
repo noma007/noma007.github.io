@@ -4,66 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>วิเคราะห์แนวโน้ม XAUUSD ประจำวัน | AlphaTrading</title>
-    <script src="https://jsdelivr.net"></script>
     <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; color: #334155; line-height: 1.6; padding-bottom: 40px; }
+        nav { background-color: #0f172a; color: #ffffff; position: sticky; top: 0; z-index: 50; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 16px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .brand { font-weight: 800; font-size: 1.25rem; text-decoration: none; color: #ffffff; }
+        .brand span { color: #f59e0b; }
+        .nav-links a { color: #ffffff; text-decoration: none; font-size: 0.875rem; margin-left: 24px; }
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 16px; }
+        .article-box { background: #ffffff; padding: 32px; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .meta-info { display: flex; gap: 12px; align-items: center; font-size: 0.75rem; color: #64748b; margin-bottom: 16px; }
+        .tag { background: #0f172a; color: #fff; padding: 4px 8px; border-radius: 4px; font-weight: 700; }
+        h1 { font-size: 1.75rem; font-weight: 900; color: #0f172a; margin-bottom: 16px; }
+        .article-content p { margin-bottom: 16px; color: #475569; }
+        .article-content ul { padding-left: 20px; margin-bottom: 16px; color: #475569; }
+        .article-content li { margin-bottom: 8px; }
+        .comment-section { background: #ffffff; padding: 32px; border-radius: 16px; border: 1px solid #e2e8f0; }
+        .comment-section h3 { margin-bottom: 16px; font-size: 1.125rem; font-weight: 700; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 8px; }
+        .form-control { width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.875rem; }
+        .btn-submit { background-color: #0f172a; color: white; padding: 10px 20px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; font-size: 0.875rem; }
+        .btn-submit:hover { background-color: #1e293b; }
+        .comment-card { background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 16px; }
+        .comment-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.75rem; color: #94a3b8; }
+        .comment-user { font-weight: 700; color: #0f172a; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-
-    <!-- NAV BAR -->
-    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-chart-line text-amber-500 text-2xl"></i>
-                <a href="index.html" class="text-xl font-bold tracking-wider">ALPHA<span class="text-amber-500">TRADING</span></a>
-            </div>
-            <div class="flex space-x-6 text-sm font-medium">
-                <a href="index.html" class="hover:text-amber-400">หน้าแรก</a>
-                <a href="blog.html" class="text-amber-500">บทความวิเคราะห์</a>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="brand"><i class="fa-solid fa-chart-line"></i> ALPHA<span>TRADING</span></a>
+            <div class="nav-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="blog.html" style="color:#f59e0b;">บทความวิเคราะห์</a>
             </div>
         </div>
     </nav>
 
-    <!-- ARTICLE CONTENT -->
-    <main class="max-w-3xl mx-auto px-4 py-12">
-        <article class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 mb-8">
-            <div class="flex items-center space-x-3 mb-4 text-xs text-gray-500">
-                <span class="bg-slate-900 text-white font-bold px-2.5 py-1 rounded">เทคนิคอล</span>
-                <span><i class="fa-regular fa-calendar-days mr-1"></i> 20 ตุลาคม 2569</span>
-            </div>
-            
-            <h1 class="text-2xl md:text-3xl font-black text-slate-950 mb-6">มุมมองทางเทคนิค XAUUSD: ภาพรวมตลาดยังรักษาแนวโน้มหลักได้ไหม?</h1>
-            
-            <div class="text-gray-700 leading-relaxed space-y-4 mb-8">
-                <p>ในภาพรวมของ<strong>ไทม์เฟรม Day</strong> แนวโน้มหลักยังคงรักษารูปแบบทิศทางขาขึ้นไว้ได้ชัดเจน แต่อาจมีโอกาสเห็นการปรับฐานลึกเพื่อสะสมแรงในการปรับตัวขึ้นต่อ ปัจจุบันราคามีการกดตัวลงทำแท่งแดง โดยเนื้อเทียนลงต่ำกว่าไส้เทียนของแท่งก่อนหน้า ทว่าเมื่อทดสอบบริเวณโซนสำคัญแถว <strong>4250</strong> เริ่มมีแรงรีบาวด์ยกตัวขึ้นกลับมา (ปัจจุบันแท่งวันยังไม่ปิด)</p>
-                
-                <h3 class="font-bold text-slate-950 text-lg mt-6">จุดที่น่าจับตามองในระยะกลาง-สั้น:</h3>
-                <ul class="list-disc pl-5 space-y-2 text-gray-650">
+    <div class="main-container">
+        <article class="article-box">
+            <div class="meta-info"><span class="tag">เทคนิคอล</span> <span>20 ต.ค. 2569</span></div>
+            <h1>มุมมองทางเทคนิค XAUUSD: ภาพรวมตลาดยังรักษาแนวโน้มหลักได้ไหม?</h1>
+            <div class="article-content">
+                <p>ในภาพรวมของ<strong>ไทม์เฟรม Day</strong> แนวโน้มหลักยังคงรักษารูปแบบทิศทางขาขึ้นไว้ได้ชัดเจน แต่อาจมีโอกาสเห็นการปรับฐานลึกเพื่อสะสมแรงในการปรับตัวขึ้นต่อ ปัจจุบันราคามีการกดตัวลงทำแท่งแดง โดยเนื้อเทียนลงต่ำกว่าไส้เทียนของแท่งก่อนหน้า ทว่าเมื่อทดสอบบริเวณโซนสำคัญแถว <strong>4250</strong> เริ่มมีแรงรีบาวด์ยกตัวขึ้นกลับมา</p>
+                <h3 style="margin:16px 0 8px; font-size:1.1rem; color:#0f172a;">จุดที่น่าจับตามองในระยะกลาง-สั้น:</h3>
+                <ul>
                     <li><strong>ระยะกลาง:</strong> โครงสร้างราคายังไม่หลุดกรอบ Falling Wedge และช่วงกรอบสะสมตัว (Sideway)</li>
                     <li><strong>นัยสำคัญทางสถิติ:</strong> โซนแถว <strong>4165</strong> มีความใกล้เคียงกับระดับสัดส่วน Fibonacci 78.6% มีลุ้นเป็นแนวรับสำคัญ</li>
                     <li><strong>โอกาสการปรับฐานระยะสั้น:</strong> หากพักตัวต่อเนื่อง มีโอกาสลงไปทดสอบเป้าหมายถัดไปบริเวณ <strong>4100</strong> ก่อนฟื้นตัว</li>
                 </ul>
-
-                <h3 class="font-bold text-slate-950 text-lg mt-6">ไทม์เฟรม H1 (ระยะสั้น):</h3>
-                <p>ราคาเริ่มเคลื่อนไหวในลักษณะ Bullish Flag รอการยืนยันโครงสร้างอีก 1 จุด รวมถึงวิ่งอยู่ในกรอบ Ascending Channel</p>
-                <ul class="list-disc pl-5 space-y-2 text-gray-650">
-                    <li><strong>กรณีที่โครงสร้างไม่เสีย:</strong> มีโอกาสปรับตัวขึ้นไปทดสอบเป้าหมายกรอบบนแถว <strong>4165</strong></li>
-                    <li><strong>กรณีที่มีการพักตัว:</strong> อาจลงมาทดสอบกรอบล่างของแนวรับโซน <strong>4100</strong></li>
-                </ul>
             </div>
         </article>
 
-        <!-- COMMENT SECTION -->
-        <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-            <h3 class="text-base font-bold text-slate-950 mb-4">แสดงความคิดเห็น</h3>
-            <textarea id="box" rows="2" class="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-amber-500 mb-3" placeholder="พิมพ์ข้อความของคุณที่นี่..."></textarea>
-            <button onclick="alert('ขอบคุณสำหรับความคิดเห็น ระบบกำลังตรวจสอบความปลอดภัย')" class="bg-slate-900 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-slate-800">ส่งข้อความ</button>
-        </section>
-    </main>
+        <section class="comment-section">
+            <h3>ร่วมแสดงความคิดเห็น / แลกเปลี่ยนมุมมอง</h3>
+            <form id="commentForm">
+                <div class="form-group">
+                    <label>ชื่อผู้ใช้งาน</label>
+                    <input type="text" id="commenterName" required class="form-control" placeholder="ใส่ชื่อเล่นหรือนามแฝงของคุณ">
+                </div>
+                <div class="form-group">
+                    <label>ข้อความแสดงความคิดเห็น</label>
+                    <textarea id="commentText" rows="3" required class="form-control" placeholder="พิมพ์มุมมองของคุณเกี่ยวกับบทวิเคราะห์นี้..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">ส่งความคิดเห็น</button>
+            </form>
 
-    <!-- WORDING RISK WARNING -->
-    <footer class="bg-slate-900 text-gray-500 text-[10px] py-6 text-center border-t border-slate-800">
-        <p class="max-w-xl mx-auto px-4">คำเตือน: เนื้อหาด้านบนเป็นเพียงบันทึกสถิติส่วนบุคคล ไม่ใช่คำแนะนำทางการเงิน ผู้ลงทุนควรศึกษาความเสี่ยงด้วยตนเอง</p>
-    </footer>
+            <div id="commentsList">
+                <div class="comment-card">
+                    <div class="comment-header"><span class="comment-user"><i class="fa-regular fa-user mr-1"></i> Trader_Gold88</span><span>เมื่อ 10 นาทีที่แล้ว</span></div>
+                    <p style="font-size:0.875rem; color:#475569;">เห็นด้วยครับ โซน 4100 สวยมาก ถ้าย่อลงมาไม่หลุดโครงสร้างกรอบราคาก็น่าลุ้นสะสมครับ</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('commenterName').value.trim();
+            const text = document.getElementById('commentText').value.trim();
+            if(!name || !text) return;
+
+            const card = document.createElement('div');
+            card.className = 'comment-card';
+            card.innerHTML = `<div class="comment-header"><span class="comment-user"><i class="fa-regular fa-user"></i> \${name}</span><span>เมื่อสักครู่</span></div><p style="font-size:0.875rem; color:#475569;">\${text}</p>`;
+            
+            const list = document.getElementById('commentsList');
+            list.insertBefore(card, list.firstChild);
+            
+            document.getElementById('commentText').value = '';
+            document.getElementById('commenterName').value = '';
+        });
+    </script>
 </body>
 </html>
+
 
