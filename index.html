@@ -4,10 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlphaTrading | Forex EA & Financial Analysis</title>
-    <!-- เรียกลิงก์หาไฟล์ CSS โดยตรง ปลอดภัย ไม่ผ่าน CDN นอก -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome Icons สำหรับไอคอนในระบบ -->
     <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <!-- ฝัง CSS โดยตรงในตัวไฟล์เพื่อแก้ปัญหาเรื่องการดึงโฟลเดอร์ไม่เจอ -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: #0f172a;
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand span { color: #f59e0b; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #fbbf24; }
+        .nav-links a.active { color: #f59e0b; }
+        .btn-gold {
+            background-color: #f59e0b;
+            color: #0f172a;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.2s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold:hover {
+            background-color: #d97706;
+            transform: translateY(-1px);
+        }
+        .btn-blue {
+            background-color: #3b82f6;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+        .btn-blue:hover { background-color: #2563eb; }
+        .hero-slider {
+            background-color: #1e293b;
+            color: #ffffff;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-item {
+            display: none;
+            position: absolute;
+            inset: 0;
+            padding: 0 16px;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            background-color: #334155;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .carousel-item.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 1;
+        }
+        .slider-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .slider-content h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .slider-content h1 span { color: #fde047; }
+        .slider-content p {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin-bottom: 24px;
+        }
+        .badge {
+            background-color: #f59e0b;
+            color: #0f172a;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .section-padding { padding: 64px 16px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 48px; }
+        .section-title h2 { font-size: 1.875rem; font-weight: 800; color: #0f172a; }
+        .section-title p { color: #64748b; margin-top: 8px; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .product-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #fef3c7;
+            color: #d97706;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+        .product-card h3 { font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .product-card p { color: #64748b; font-size: 0.875rem; margin-bottom: 24px; flex-grow: 1; }
+        .product-footer {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+        .price { font-weight: 800; color: #0f172a; }
+        footer { background-color: #0f172a; color: #94a3b8; font-size: 0.75rem; padding: 48px 16px; border-top: 1px solid #1e293b; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+        .risk-box { background-color: rgba(15, 23, 42, 0.6); padding: 16px; border-radius: 8px; border: 1px solid #334155; line-height: 1.6; }
+        .risk-box span { color: #f59e0b; font-weight: 700; }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .slider-content h1 { font-size: 1.75rem; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
@@ -74,42 +261,7 @@
             <div class="product-card">
                 <div class="product-icon"><i class="fa-solid fa-gem"></i></div>
                 <h3>Gold Hunter Pro</h3>
-                <p>EA สำหรับคำนวณหน้าเทรด XAUUSD โดยเฉพาะ ใช้ระบบ Trend Following ร่วมกับแนวรับแนวต้านสำคัญ</p>
-                <div class="product-footer">
-                    <span style="color: #64748b;">ความเสี่ยง: ค่อนข้างสูง</span>
-                    <span class="price" style="color: #d97706;">$199 / ปี</span>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="product-card">
-                <div class="product-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Grid Smart Hedging</h3>
-                <p>ระบบคุมพอร์ตกระจายออเดอร์พร้อมฟังก์ชัน Hedging แก้ไขพอร์ตอัตโนมัติเมื่อเกิดเหตุสภาวะตลาดผันผวนรุนแรง</p>
-                <div class="product-footer">
-                    <span style="color: #64748b;">ความเสี่ยง: ต่ำ</span>
-                    <span class="price">$299 / ถาวร</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FOOTER WITH DISCLAIMER -->
-    <footer>
-        <div class="footer-container">
-            <div class="risk-box">
-                <span><i class="fa-solid fa-triangle-exclamation"></i> คำเตือนความเสี่ยง (Risk Disclaimer):</span>
-                การซื้อขายผลิตภัณฑ์ทางการเงินและตราสารอนุพันธ์ (Forex / Gold / CFDs) มีความเสี่ยงสูงและอาจไม่เหมาะกับนักลงทุนทุกคน ข้อมูลและบทวิเคราะห์บนเว็บไซต์นี้เป็นเพียงความเห็นและสถิติเชิงเทคนิคส่วนบุคคลเพื่อแบ่งปันไอเดียเท่านั้น ไม่ถือเป็นคำชี้ชวน คัดเลือก หรือคำแนะนำในการลงทุน
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 AlphaTrading. All rights reserved. โฮสต์ระบบอย่างปลอดภัยบน GitHub</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- เรียกสคริปต์สไลด์ท้ายเว็บ -->
-    <script src="js/main.js" defer></script>
-</body>
-</html>
 
 
 
