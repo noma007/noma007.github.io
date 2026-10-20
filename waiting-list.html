@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ลงทะเบียนร่วมรับสิทธิ์ EA | AlphaTrading</title>
-    <!-- Font Awesome Icons สำหรับแสดงไอคอนนาฬิกาและโล่ความปลอดภัย -->
+    <title>ดาวน์โหลดและลงทะเบียนรับสิทธิ์ EA | AlphaTrading</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
     <style>
@@ -67,7 +67,7 @@
             border: 1px solid #334155; 
             border-radius: 16px; 
             padding: 40px 32px; 
-            max-width: 420px; 
+            max-width: 440px; 
             width: 100%; 
             text-align: center; 
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); 
@@ -93,8 +93,13 @@
         p { 
             color: #94a3b8; 
             font-size: 0.875rem; 
-            margin-bottom: 32px; 
+            margin-bottom: 24px; 
             line-height: 1.6;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         .btn-tally { 
             background-color: #f59e0b; 
@@ -106,14 +111,28 @@
             font-weight: 800; 
             text-decoration: none; 
             font-size: 0.9rem; 
-            transition: background-color 0.2s, transform 0.2s; 
+            transition: all 0.2s; 
             box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+            border: none;
+            cursor: pointer;
         }
         .btn-tally:hover { 
             background-color: #d97706; 
             transform: translateY(-1px);
         }
-        .btn-tally i {
+        .btn-download {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: 1px solid #475569;
+            box-shadow: none;
+        }
+        .btn-download:hover {
+            background-color: #334155;
+            color: #fbbf24;
+            border-color: #fbbf24;
+            transform: translateY(-1px);
+        }
+        .btn-tally i, .btn-tally svg {
             margin-right: 6px;
         }
         .footer-note { 
@@ -148,16 +167,29 @@
     <!-- MAIN BOX -->
     <main class="main-content">
         <div class="waiting-card">
-            <div class="icon-box"><i class="fa-regular fa-clock"></i></div>
-            <h1>Next-Gen EA Waiting List</h1>
-            <p>เปิดลงทะเบียนจองสิทธิ์ทดสอบระบบเทรดอัตโนมัติ XAUUSD สำหรับผู้ใช้กลุ่มแรก จำกัดจำนวนพอร์ตทดสอบ</p>
+            <div class="icon-box"><i class="fa-solid fa-download"></i></div>
+            <h1>EA Member Portal</h1>
+            <p>ศูนย์ดาวน์โหลดระบบเทรดอัตโนมัติ (MT4) และกรอกข้อมูลสิทธิ์การใช้งานพาร์ทเนอร์</p>
             
-            <!-- 🌟 วางลิงก์ Tally ฟอร์มของคุณแทนที่เครื่องหมาย # ตรงนี้ได้เลยครับ -->
-            <a href="https://tally.so/r/GevbdZ" target="_blank" class="btn-tally">
-                <i class="fa-solid fa-pen-to-square"></i> กดที่นี่เพื่อกรอกฟอร์มลงทะเบียน (Tally)
-            </a>
+            <div class="button-group">
+                <!-- 🌟 1. ปุ่มลงทะเบียน Tally (เปลี่ยนเครื่องหมาย # เป็นลิงก์ฟอร์มของคุณ) -->
+                <a href="https://tally.so/r/GevbdZ" target="_blank" class="btn-tally">
+                    <i class="fa-solid fa-pen-to-square"></i> กดลงทะเบียนรับสิทธิ์ใช้งาน (Tally)
+                </a>
+                
+                <!-- 🌟 2. ปุ่มดาวน์โหลดไฟล์ EA ในรูปแบบ .ZIP (เปลี่ยนชื่อไฟล์ตามที่คุณอัปโหลดขึ้น GitHub) -->
+                <a href="AlphaScalper.zip" download class="btn-tally btn-download">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    ดาวน์โหลดไฟล์ระบบ EA (.ZIP)
+                </a>
+
+                <!-- 🌟 3. ปุ่มดาวน์โหลดไฟล์คู่มือติดตั้ง PDF (กรณีที่คุณต้องการอัปโหลดไฟล์คู่มือคู่กัน) -->
+                <a href="manual.pdf" target="_blank" class="btn-tally btn-download" style="border-style: dotted;">
+                    <i class="fa-regular fa-file-pdf"></i> ดาวน์โหลดคู่มือการติดตั้ง (PDF)
+                </a>
+            </div>
             
-            <div class="footer-note"><i class="fa-solid fa-shield-halved"></i> ข้อมูลจะถูกเก็บรักษาตามนโยบาย PDPA</div>
+            <div class="footer-note"><i class="fa-solid fa-shield-halved"></i> ข้อมูลจะถูกรักษาความปลอดภัยตามมาตรฐาน PDPA</div>
         </div>
     </main>
 
@@ -168,5 +200,6 @@
     
 </body>
 </html>
+
 
 
