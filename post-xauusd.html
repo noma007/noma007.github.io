@@ -223,17 +223,17 @@
 
     </div>
 
-    <script>
-    // 🚀 สคริปต์อัปเกรด: รองรับการทำหลายโพสต์ในไฟล์เดียวโดยอัตโนมัติ ไม่ต้องก๊อบโค้ดเพิ่ม
+   <!-- 🚀 แท็กสคริปต์อัตโนมัติ: ควบคุมคอมเมนต์ของทุกวันแยกกันอย่างแม่นยำ ไม่ปนกัน 100% -->
+<script>
     document.addEventListener('submit', function (e) {
-        // ตรวจสอบว่าฟอร์มที่กดส่ง มี ID ที่ขึ้นต้นด้วยคำว่า commentForm หรือไม่
+        // ตรวจสอบฟอร์มที่กดส่งว่ามี ID ขึ้นต้นด้วยคำว่า commentForm หรือไม่
         if (e.target && e.target.id && e.target.id.startsWith('commentForm')) {
             e.preventDefault();
             
             // ดึงค่าวันที่พ่วงท้ายออกมา (เช่น -22oct หรือ -21oct)
             const suffix = e.target.id.replace('commentForm', '');
             
-            // ดึงค่าข้อมูลจากช่องกรอกของโพสต์นั้นๆ อย่างแม่นยำ
+            // ดึงค่าข้อมูลจากช่องกรอกของโพสต์วันนั้นๆ
             const nameInput = document.getElementById('commenterName' + suffix);
             const textInput = document.getElementById('commentText' + suffix);
             const list = document.getElementById('commentsList' + suffix);
@@ -244,12 +244,12 @@
             const text = textInput.value.trim();
             if (!name || !text) return;
 
-            // สร้างการ์ดข้อความแสดงความคิดเห็น
+            // สร้างการ์ดข้อความคอมเมนต์ใหม่
             const card = document.createElement('div');
             card.className = 'comment-card';
             card.innerHTML = `<div class="comment-header"><span class="comment-user"><i class="fa-regular fa-user"></i> ${name}</span><span>เมื่อสักครู่</span></div><p style="font-size:0.875rem; color:#475569;">${text}</p>`;
             
-            // แทรกคอมเมนต์ใหม่ไว้บนสุดของกล่องวันนั้นๆ
+            // แทรกคอมเมนต์ใหม่ไว้ด้านบนสุดของวันนั้นๆ
             list.insertBefore(card, list.firstChild);
             
             // ล้างข้อมูลในช่องกรอกหลังจากส่งเสร็จเรียบร้อย
@@ -257,7 +257,8 @@
             nameInput.value = '';
         }
     });
-  </script>
+</script>
+
 
 </body>
 </html>
