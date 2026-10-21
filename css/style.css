@@ -277,6 +277,21 @@ footer { background-color: #0f172a; color: #94a3b8; font-size: 0.75rem; padding:
     text-decoration: none;
 }
 
+/* ควบคุมขนาดรูปภาพบทวิเคราะห์ให้รองรับทุกหน้าจอ (Responsive) */
+.article-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+/* เอฟเฟกต์ซูมเบาๆ เวลาลูกค้าเอาเมาส์มาวางส่องกราฟ */
+.article-image img:hover {
+    transform: scale(1.02);
+}
+
 /* เอฟเฟกต์สีเมื่อนำเมาส์มาวางชี้ (Hover) */
 .social-links a[aria-label="Website"]:hover { color: #00bfff; background-color: rgba(0, 191, 255, 0.1); }
 .social-links a[aria-label="Facebook-Page"]:hover { color: #1877f2; background-color: rgba(24, 119, 242, 0.1); }
