@@ -292,6 +292,19 @@ footer { background-color: #0f172a; color: #94a3b8; font-size: 0.75rem; padding:
     transform: scale(1.02);
 }
 
+/* สีเอฟเฟกต์เฉพาะตัวของปุ่ม LINE OA บัญชีทางการ (Hover) */
+.social-links a[aria-label="Line-OA"]:hover {
+    color: #ffffff !important;
+    background-color: #06c755 !important;
+    box-shadow: 0 0 15px rgba(6, 199, 85, 0.6);
+}
+
+/* สีเอฟเฟกต์เฉพาะตัวของปุ่ม TikTok (Hover) */
+.social-links a[aria-label="TikTok"]:hover {
+    color: #ff0050;
+    background-color: rgba(255, 0, 80, 0.1);
+}
+
 /* เอฟเฟกต์สีเมื่อนำเมาส์มาวางชี้ (Hover) */
 .social-links a[aria-label="Website"]:hover { color: #00bfff; background-color: rgba(0, 191, 255, 0.1); }
 .social-links a[aria-label="Facebook-Page"]:hover { color: #1877f2; background-color: rgba(24, 119, 242, 0.1); }
