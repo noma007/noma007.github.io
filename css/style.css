@@ -262,5 +262,29 @@ footer { background-color: #0f172a; color: #94a3b8; font-size: 0.75rem; padding:
     height: 100%;
 }
 
+/* จัดสไตล์ไอคอนโซเชียลท้ายเว็บ index.html */
+.social-links a {
+    color: #ffffff; /* เริ่มต้นเป็นสีขาว */
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* เอฟเฟกต์สีเมื่อนำเมาส์มาวางชี้ (Hover) */
+.social-links a[aria-label="Website"]:hover { color: #00bfff; background-color: rgba(0, 191, 255, 0.1); }
+.social-links a[aria-label="Facebook-Page"]:hover { color: #1877f2; background-color: rgba(24, 119, 242, 0.1); }
+.social-links a[aria-label="Facebook-Personal"]:hover { color: #42b72a; background-color: rgba(66, 183, 42, 0.1); }
+.social-links a[aria-label="Line"]:hover { color: #06c755; background-color: rgba(6, 199, 85, 0.1); }
+.social-links a[aria-label="TikTok"]:hover { color: #ff0050; background-color: rgba(255, 0, 80, 0.1); }
+.social-links a[aria-label="YouTube"]:hover { color: #ff0000; background-color: rgba(255, 0, 0, 0.1); }
+.social-links a:hover { transform: translateY(-3px); }
+
 
 
