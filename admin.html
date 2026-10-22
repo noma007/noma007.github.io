@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>AlphaTrading - ระบบสร้างโพสต์บทวิเคราะห์ด่วน V2</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 30px; }
+        .admin-box { max-width: 750px; background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #ffd700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 0 auto; }
+        h2 { color: #ffd700; text-align: center; margin-top: 0; }
+        .section-title { font-size: 1.05rem; color: #ffd700; border-bottom: 1px dashed #334155; padding-bottom: 5px; margin-top: 25px; margin-bottom: 15px; font-weight: bold; }
+        .form-group { margin-bottom: 15px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #94a3b8; font-size: 0.9rem; }
+        input, textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box; }
+        input:focus, textarea:focus { border-color: #ffd700; outline: none; }
+        button { width: 100%; padding: 14px; background: #ffd700; border: none; color: #0f172a; font-weight: bold; font-size: 1.05rem; border-radius: 6px; cursor: pointer; transition: 0.2s; margin-top: 15px; }
+        button:hover { background: #e6c200; }
+        .result-box { margin-top: 25px; display: none; }
+        textarea.code-output { background: #000; color: #00ff00; font-family: monospace; font-size: 0.85rem; height: 280px; }
+        .copy-btn { background: #38bdf8; color: #0f172a; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="admin-box">
+    <h2>✍️ เครื่องมือจัดเตรียมโพสต์ประจำวัน (AlphaTrading V2)</h2>
+    <form id="creatorForm">
+        
+        <div class="section-title">📅 ส่วนข้อมูลหลักและเนื้อหา</div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>1. วันที่โพสต์ (เช่น 23 ต.ค. 2569)</label>
+                <input type="text" id="postDate" placeholder="23 ต.ค. 2569" required>
+            </div>
+            <div class="form-group">
+                <label>2. รหัสอ้างอิงระบบคอมเมนต์ (เช่น 23oct)</label>
+                <input type="text" id="postSlug" placeholder="23oct" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>3. หัวข้อบทวิเคราะห์</label>
+            <input type="text" id="postTitle" placeholder="มุมมองทางเทคนิค XAUUSD: กราฟทดสอบแนวรับสำคัญ มีลุ้นรีบาวด์ในกรอบขาขึ้น" required>
+        </div>
+        <div class="form-group">
+            <label>4. เนื้อหาภาพรวมประจำวัน</label>
+            <textarea id="postContent" rows="4" placeholder="จากการประเมินโครงสร้างราคาทองคำล่าสุดใน ไทม์เฟรม Day..." required></textarea>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>5. ชื่อไฟล์รูปกราฟที่ 1 (เช่น chart-23oct-1.png)</label>
+                <input type="text" id="imgOne" placeholder="chart-23oct-1.png" required>
+            </div>
+            <div class="form-group">
+                <label>6. ชื่อไฟล์รูปกราฟที่ 2 (เช่น chart-23oct-2.png)</label>
+                <input type="text" id="imgTwo" placeholder="chart-23oct-2.png" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>7. ข้อความในกล่องโซนยุทธศาสตร์หลัก</label>
+            <textarea id="zoneText" rows="2" placeholder="ระดับราคาบริเวณ 4250 - 4240 ถือเป็นจุดตัดสินใจที่แข็งแกร่ง..." required></textarea>
+        </div>
+
+        <div class="section-title">🎯 โซนยุทธศาสตร์ประจำวัน (กรอบราคาตัวเลข)</div>
+        <div class="form-group">
+            <label>🎯 เป้าหมายขาขึ้น (เช่น 4280 - 4300)</label>
+            <input type="text" id="targetUp" placeholder="4280 - 4300" required>
+        </div>
+        <div class="form-group">
+            <label>💡 คำแนะนำหน้างาน</label>
+            <input type="text" id="tradeAdvice" placeholder="รอสัญญาณกลับตัวที่แนวรับเพื่อหาจังหวะ Buy สั้นๆ เล่นในกรอบ" required>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>📌 กรอบแนวรับสำคัญ (เช่น 4240 และ 4200)</label>
+                <input type="text" id="supportZone" placeholder="4240 และ 4200" required>
+            </div>
+            <div class="form-group">
+                <label>📌 กรอบแนวต้านสำคัญ (เช่น 4280 และ 4350)</label>
+                <input type="text" id="resistanceZone" placeholder="4280 และ 4350" required>
+            </div>
+        </div>
+
+        <div class="section-title">⚠️ ข้อควรระวังปิดท้าย</div>
+        <div class="form-group">
+            <label>🔔 คำเตือนความเสี่ยง</label>
+            <input type="text" id="warningText" value="ตลาดช่วงนี้มีความผันผวนสูง ควรวางแผนบริหารความเสี่ยง (MM) อย่างเคร่งครัดนะครับ" required>
+        </div>
+
+        <button type="submit">🔥 คลิกเพื่อเจนโค้ด HTML สำเร็จรูป</button>
+    </form>
+
+    <div class="result-box" id="resultBox">
+        <label>🎯 คัดลอกโค้ดด้านล่างนี้ ไปวางใน GitHub ได้เลยครับ:</label>
+        <textarea class="code-output" id="codeOutput" readonly></textarea>
+        <button class="copy-btn" onclick="copyCode()">📋 คัดลอกโค้ดทั้งหมด</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('creatorForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var date = document.getElementById('postDate').value;
+        var slug = document.getElementById('postSlug').value;
+        var title = document.getElementById('postTitle').value;
+        var content = document.getElementById('postContent').value;
+        var img1 = document.getElementById('imgOne').value;
+        var img2 = document.getElementById('imgTwo').value;
+        var zone = document.getElementById('zoneText').value;
+        
+        // ดักจับข้อมูลกรอบราคาตัวเลขที่แยกใหม่
+        var tUp = document.getElementById('targetUp').value;
+        var advice = document.getElementById('tradeAdvice').value;
+        var sup = document.getElementById('supportZone').value;
+        var res = document.getElementById('resistanceZone').value;
+        
+        var warning = document.getElementById('warningText').value;
+
+// ประกอบร่างเป็นโครงสร้างโค้ด HTML แบบมืออาชีพของพี่
+        var generatedHtml = `<!-- ========================================== -->\n` +
+            `<!-- 📌 โพสต์วิเคราะห์ทองคำประจำวันที่ ${date} -->\n` +
+            `<!-- ========================================== -->\n` +
+            `<div class="article-post-wrapper" style="margin-bottom: 50px;">\n` +
+            `    <article class="article-box" id="post-${slug}" style="background-color: #ffffff; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">\n` +
+            `        <div class="meta-info"><span class="tag">เทคนิคอล</span> <span>${date}</span></div>\n` +
+            `        <h1 style="color:#0f172a; font-size: 1.8rem; margin-top: 10px;">${title}</h1>\n` +
+            `        \n` +
+            `        <div class="article-content" style="line-height: 1.8; color: #334155;">\n` +
+            `            <p style="margin-bottom: 20px;">\n` +
+            `                <strong>📈 ประเมินสถานการณ์ XAUUSD วันที่ ${date} (อัปเดตล่าสุด):</strong><br>\n` +
+            `                ${content}\n` +
+            `            </p>\n` +
+            `            \n` +
+            `            <div class="article-image" style="margin: 25px 0; text-align: center;">\n` +
+            `                <img src="images/${img1}" alt="กราฟทองคำประจำวันที่ ${date}" style="width: 100%; max-width: 700px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"><br><br>\n` +
+            `                <img src="images/${img2}" alt="กราฟทองคำตัวที่ 2 ประจำวันที่ ${date}" style="width: 100%; max-width: 700px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">\n` +
+            `                <p style="font-size: 0.85rem; color: #64748b; margin-top: 10px;"><i class="fa-solid fa-chart-line"></i> ภาพประกอบ: โครงสร้างแนวโน้มราคาทองคำ XAUUSD ประจำวัน</p>\n` +
+            `            </div>\n` +
+            `            \n` +
+            `            <div style="background-color: #f8fafc; border-left: 4px solid #ffd700; padding: 15px; margin-bottom: 25px; border-radius: 0 8px 8px 0;">\n` +
+            `                <h3 style="margin: 0 0 10px 0; font-size: 1.05rem; color: #0f172a;"><i class="fa-solid fa-chart-area" style="color: #ffd700; margin-right: 8px;"></i> โซนยุทธศาสตร์หลัก</h3>\n` +
+            `                <p style="margin: 0; font-size: 0.95rem;">${zone}</p>\n` +
+            `            </div>\n` +
+            `            \n` +
+            `            <h3 style="margin: 25px 0 10px 0; font-size: 1.1rem; color: #0f172a;"><i class="fa-solid fa-bullseye" style="margin-right: 8px;"></i> กลยุทธ์ตามกรอบราคาประจำวัน</h3>\n` +
+            `            <ul style="margin: 0 0 20px 0; padding-left: 20px; font-size: 0.95rem;">\n` +
+            `                <li style="margin-bottom: 8px;">🎯 <strong>เป้าหมายขาขึ้น:</strong> มีลุ้นรีบาวด์สปีดตัวขึ้นไปทดสอบเป้าหมายระยะสั้นที่โซน <strong>${tUp}</strong></li>\n` +
+            `                <li style="margin-bottom: 8px;">💡 <strong>คำแนะนำหน้างาน:</strong> ${advice}</li>\n` +
+            `                <li style="margin-bottom: 8px;">📌 <strong>กรอบแนวรับสำคัญ:</strong> ${sup}</li>\n` +
+            `                <li style="margin-bottom: 8px;">📌 <strong>กรอบแนวต้านสำคัญ:</strong> ${res}</li>\n` +
+            `            </ul>\n` +
+            `            \n` +
+            `            <p style="margin-top: 20px; font-size: 0.95rem; border-top: 1px solid #e2e8f0; padding-top: 15px; color: #475569;">\n` +
+            `                <strong>🔔 ข้อควรระวัง:</strong> ${warning}<br>\n` +
+            `                <span style="display: block; margin-top: 10px; color: #0f172a; font-weight: 500;">💬 เพื่อน ๆ เทรดเดอร์คิดเห็นอย่างไรกันบ้างกับกราฟทองวันนี้? คอมเมนต์แลกเปลี่ยนมุมมองกันได้เลยครับ ฝากกดไลค์ กดแชร์ เพื่อเป็นกำลังใจให้ Q-Series ด้วยนะครับ!</span>\n` +
+            `            </p>\n` +
+            `        </div>\n` +
+            `    </article>\n` +
+            `    \n` +
+            `    <section class="comment-section" id="comments-${slug}">\n` +
+            `        <h3>ร่วมแสดงความคิดเห็น / แลกเปลี่ยนมุมมอง (${date})</h3>\n` +
+            `        <form id="commentForm-${slug}">\n` +
+            `            <div class="form-group"><label style="color:#475569;">ชื่อผู้ใช้งาน</label><input type="text" id="commenterName-${slug}" required style="border:1px solid #cbd5e1; background:#fff; color:#000; padding: 8px; width:100%; box-sizing:border-box; border-radius:4px;" placeholder="ใส่ชื่อเล่นหรือนามแฝงของคุณ"></div>\n` +
+            `            <div class="form-group"><label style="color:#475569;">ข้อความแสดงความคิดเห็น</label><textarea id="commentText-${slug}" rows="3" required style="border:1px solid #cbd5e1; background:#fff; color:#000; padding: 8px; width:100%; box-sizing:border-box; border-radius:4px;" placeholder="พิมพ์มุมมองของคุณเกี่ยวกับบทวิเคราะห์นี้..."></textarea></div>\n` +
+            `            <button type="submit" style="background:#0f172a; color:#fff; margin-top:10px; padding: 10px 20px; border:none; border-radius:4px; cursor:pointer;">ส่งความคิดเห็น</button>\n` +
+            `        </form>\n` +
+            `        <div id="commentsList-${slug}" style="margin-top: 20px;"></div>\n` +
+            `    </section>\n` +
+            `</div>\n` +
+            `<script>\n` +
+            `    document.getElementById('commentForm-${slug}').addEventListener('submit', function(e) {\n` +
+            `        e.preventDefault();\n` +
+            `        var name = document.getElementById('commenterName-${slug}').value;\n` +
+            `        var text = document.getElementById('commentText-${slug}').value;\n` +
+            `        var dateStr = new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });\n` +
+            `        var commentHtml = '<div style=\"background: #f1f5f9; padding: 15px; border-radius: 8px; margin-bottom: 12px; border-left: 3px solid #64748b; text-align:left;\"><div style=\"font-weight: bold; font-size: 0.9rem; color: #1e293b;\">' + name + ' <span style=\"font-weight: normal; font-size: 0.75rem; color: #94a3b8; margin-left: 10px;\">' + dateStr + '</span></div><div style=\"font-size: 0.9rem; color: #475569; margin-top: 5px;\">' + text + '</div></div>';\n` +
+            `        document.getElementById('commentsList-${slug}').insertAdjacentHTML('afterbegin', commentHtml);\n` +
+            `        document.getElementById('commentForm-${slug}').reset();\n` +
+            `    });\n` +
+            `<\/script>\n` +
+            `<hr style="border: 2px dashed rgba(255,215,0,0.2); margin: 50px 0;">`;
+
+        document.getElementById('codeOutput').value = generatedHtml;
+        document.getElementById('resultBox').style.display = 'block';
+        document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+    });
+
