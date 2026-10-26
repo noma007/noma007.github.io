@@ -314,5 +314,17 @@ footer { background-color: #0f172a; color: #94a3b8; font-size: 0.75rem; padding:
 .social-links a[aria-label="YouTube"]:hover { color: #ff0000; background-color: rgba(255, 0, 0, 0.1); }
 .social-links a:hover { transform: translateY(-3px); }
 
+/* เพิ่มเติมสีเอฟเฟกต์เฉพาะตัวของปุ่ม FB Fanpage & Messenger (Hover) */
+.social-links a[aria-label="Facebook-Page"]:hover { 
+    color: #ffffff !important; 
+    background-color: #1877f2 !important; 
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.6); 
+}
+.social-links a[aria-label="Facebook-Personal"]:hover { 
+    color: #ffffff !important; 
+    background-color: #00b2ff !important; 
+    box-shadow: 0 0 15px rgba(0, 178, 255, 0.6); 
+}
+
 
 
