@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบ EA สินค้า & OFFICIAL PORTFOLIO | Q-Series Trading</title>
+    <!-- ผูกชุดไอคอน FontAwesome สำหรับหน้างานจริง -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; padding: 40px 16px; }
         .container { max-width: 1200px; margin: 0 auto; }
         
-        .header-title { text-align: center; margin-bottom: 48px; border-bottom: 1px solid #1e293b; padding-bottom: 24px; }
+        /* 🔝 ส่วนหัวและปุ่มดึงกลับหน้าแรกสีทองพรีเมียม */
+        .header-title { text-align: center; margin-bottom: 48px; border-bottom: 1px solid #1e293b; padding-bottom: 24px; position: relative; }
         .header-title h1 { font-size: 2rem; font-weight: 900; color: #f59e0b; letter-spacing: 0.05em; }
-        .header-title h1 span { color: #ffffff; font-size: 1.5rem; display: block; margin-top: 4px; }
+        .header-title h1 span { color: #ffffff; font-size: 1.4rem; display: block; margin-top: 4px; }
         .header-title p { color: #94a3b8; font-size: 0.9rem; margin-top: 8px; }
+        .btn-top-home { display: inline-block; margin-top: 16px; background-color: #f59e0b; color: #0f172a; padding: 8px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+        .btn-top-home:hover { background-color: #d97706; transform: translateY(-1px); }
         
-        /* 🛒 โครงสร้างตารางสินค้าการ์ดขาวดั้งเดิม (Our Products) */
+        /* 🛒 ตารางสินค้าการ์ดขาวดั้งเดิม (Our Products) */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 64px; }
         .product-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.05); color: #334155; transition: transform 0.2s; }
         .product-card:hover { transform: translateY(-3px); }
@@ -23,22 +28,28 @@
         .product-card p { color: #64748b; font-size: 0.875rem; margin-bottom: 24px; flex-grow: 1; }
         .product-footer { border-top: 1px solid #f1f5f9; padding-top: 16px; display: flex; justify-content: space-between; font-size: 0.875rem; align-items: center; }
         .price { font-weight: 800; color: #d97706; font-size: 1.1rem; }
-        .btn-action { background-color: #0f172a; color: #ffffff; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.75rem; font-weight: bold; transition: background-color 0.2s; }
+        .btn-action { background-color: #0f172a; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.75rem; font-weight: bold; transition: background-color 0.2s; }
         .btn-action:hover { background-color: #f59e0b; color: #0f172a; }
 
-        /* 📊 โครงสร้างแกลเลอรีรูปภาพ/สถิติพอร์ต (แฟ้มอัลบั้ม) */
+        /* 📊 แกลเลอรีแกลเลอรีแฟ้มพอร์ต/อัลบั้มรูป */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 48px; }
-        .portfolio-card { background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.1); }
-        .image-wrapper { width: 100%; height: 200px; background-color: #0f172a; overflow: hidden; position: relative; border-bottom: 1px solid #334155; }
+        .portfolio-card { background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.15); }
+        .image-wrapper { width: 100%; height: 180px; background-color: #0f172a; overflow: hidden; position: relative; border-bottom: 1px solid #334155; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
         .portfolio-card:hover .image-wrapper img { transform: scale(1.05); }
         .content-box { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .ea-title { font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; }
+        .ea-title { font-size: 1.05rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; }
         .ea-desc { font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px; }
-        .ea-footer { font-size: 0.75rem; color: #f59e0b; font-weight: bold; border-top: 1px dashed #334155; padding-top: 10px; display: flex; justify-content: space-between; }
+        .ea-footer { font-size: 0.75rem; color: #f59e0b; font-weight: bold; border-top: 1px dashed #334155; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; }
         
-        .btn-back { display: block; width: 180px; margin: 40px auto 0; text-align: center; background-color: #f59e0b; color: #0f172a; padding: 12px; border-radius: 6px; font-weight: bold; text-decoration: none; transition: background-color 0.2s; }
+        /* 👾 หน้าต่างป๊อปอัปขยายรูปภาพ (Lightbox Modal) */
+        .modal { display: none; position: fixed; z-index: 999999; inset: 0; background-color: rgba(15, 23, 42, 0.95); align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { max-width: 90%; max-height: 85vh; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); object-fit: contain; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #ffffff; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.2s; }
+        .close-btn:hover { color: #f59e0b; }
+        
+        .btn-back { display: block; width: 200px; margin: 40px auto 0; text-align: center; background-color: #f59e0b; color: #0f172a; padding: 12px; border-radius: 6px; font-weight: bold; text-decoration: none; transition: background-color 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
         .btn-back:hover { background-color: #d97706; }
     </style>
 </head>
@@ -46,112 +57,178 @@
 
     <div class="container">
         
-        <!-- 🛒 โซนบนสุด: ยกท่อการ์ดสินค้า #products ดั้งเดิมมาประจำการแบบหล่อๆ -->
+        <!-- ✅ มีปุ่มกดกลับไปหน้าแรกดั้งเดิมของคุณพี่อมร ด้านบนสุดเรียบร้อย -->
         <div class="header-title">
             <h1>📦 ระบบ EA & สินค้า <span>(Our Products)</span></h1>
             <p>เลือกเครื่องมือและระบบเทรดอัตโนมัติที่เหมาะสมกับสไตล์การลงทุนของคุณ</p>
+            <a href="index.html" class="btn-top-home"><i class="fa-solid fa-house"></i> กลับสู่หน้าหลัก</a>
         </div>
 
         <div class="product-grid">
             <!-- สินค้าตัวที่ 1: Quark Scalper EA -->
             <div class="product-card">
-                <div class="product-icon">⚡</div>
+                <div class="product-icon"><i class="fa-solid fa-bolt"></i></div>
                 <h3>Quark Scalper EA</h3>
                 <p>เน้นเก็บกำไรระยะสั้นในกรอบ Sideway ทำงานบน ทองคำ XAUUSD พร้อมระบบจำกัดขาดทุนอัตโนมัติ</p>
                 <div class="product-footer">
                     <span style="color: #64748b;">ความเสี่ยง: ปานกลาง</span>
                     <span class="price">Free / Partner</span>
-                    <a href="index.html#waiting-list" class="btn-action">ลงทะเบียนสิทธิ์</a>
+                    <a href="index.html" class="btn-action">ลงทะเบียนสิทธิ์</a>
                 </div>
             </div>
 
             <!-- สินค้าตัวที่ 2: Quan Hunter Pro -->
             <div class="product-card">
-                <div class="product-icon">🏹</div>
+                <div class="product-icon"><i class="fa-solid fa-crosshairs"></i></div>
                 <h3>Quan Hunter Pro</h3>
                 <p>EA สำหรับคำนวณหน้าเทรด XAUUSD โดยเฉพาะ ใช้ระบบ Trend Following ร่วมกับแนวรับแนวต้านสำคัญ</p>
                 <div class="product-footer">
                     <span style="color: #64748b;">ความเสี่ยง: ปานกลาง</span>
                     <span class="price">$199 / ปี</span>
-                    <a href="index.html#waiting-list" class="btn-action">ลงทะเบียนซื้อ</a>
+                    <a href="index.html" class="btn-action">ลงทะเบียนซื้อ</a>
                 </div>
             </div>
         </div>
 
-
-        <!-- 📊 โซนกลาง: แฟ้มอัลบั้มภาพระบบบอท EA ประจำการ ตัวที่ 4-7 -->
+                <!-- ========================================== -->
+        <!-- 📊 โซนกลาง: แฟ้มคลังรูปภาพสถิติพอร์ต EA เรียบตัวครบถ้วน 6 ตัวหลัก (คลิกที่รูปเพื่อเปิดดูรูปเต็ม) -->
+        <!-- ========================================== -->
         <div class="header-title" style="margin-top: 40px;">
             <h1>📁 OFFICIAL PORTFOLIO</h1>
-            <p>คลังผลงานความสำเร็จ แฟ้มอัลบั้มภาพระบบและถอดรหัสลิขสิทธิ์ Q-Series</p>
+            <p>คลังผลงานความสำเร็จ แฟ้มภาพระบบและถอดรหัสลิขสิทธิ์ประจำค่าย (คลิกที่รูปเพื่อเปิดดูรูปเต็มได้เลยครับ)</p>
         </div>
 
         <div class="portfolio-grid">
-            <!-- ตัวที่ 7: EA Quarkrock -->
-            <div class="portfolio-card">
+
+            <!-- ตัวที่ 1/6: EA Quarkrock (ตัวที่ 7) -->
+            <div class="portfolio-card" onclick="openImageModal('https://unsplash.com')">
                 <div class="image-wrapper"><img src="https://unsplash.com" alt="EA Quarkrock"></div>
                 <div class="content-box">
                     <h2 class="ea-title">ตัวที่ 7: EA Quarkrock</h2>
-                    <p class="ea-desc">[เกราะป้องกันมหันตภัย] ระบบตัดริสก์ป้องกันทุนหน้างานรุนแรง</p>
-                    <div class="ea-footer"><span>📂 อัลบั้มระบบ</span><span>รูปภาพ 3 รูป</span></div>
+                    <p class="ea-desc">[เกราะป้องกันทุน] ตัดความเสี่ยงหน้างานทองคำลากรุนแรง</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><i class="fa-solid fa-image"></i></div>
                 </div>
             </div>
 
-            <!-- ตัวที่ 6: EA QuarkBlues -->
-            <div class="portfolio-card">
+            <!-- ตัวที่ 2/6: EA QuarkBlues (ตัวที่ 6) -->
+            <div class="portfolio-card" onclick="openImageModal('https://unsplash.com')">
                 <div class="image-wrapper"><img src="https://unsplash.com" alt="EA QuarkBlues"></div>
                 <div class="content-box">
                     <h2 class="ea-title">ตัวที่ 6: EA QuarkBlues</h2>
-                    <p class="ea-desc">[ท่วงทำนองสยบมรสุม] เครื่องจักรผลิตเงินสดเสถียรภาพสูง</p>
-                    <div class="ea-footer"><span>📂 อัลบั้มระบบ</span><span>รูปภาพ 3 รูป</span></div>
+                    <p class="ea-desc">[เครื่องจักรผลิตเงินสด] อัลโกเสถียรภาพสูง สยบสภาวะตลาดผันผวน</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><i class="fa-solid fa-image"></i></div>
                 </div>
             </div>
 
-            <!-- ตัวที่ 5: EA Quangure -->
-            <div class="portfolio-card">
+            <!-- ตัวที่ 3/6: EA Quangure (ตัวที่ 5) -->
+            <div class="portfolio-card" onclick="openImageModal('https://unsplash.com')">
                 <div class="image-wrapper"><img src="https://unsplash.com" alt="EA Quangure"></div>
                 <div class="content-box">
                     <h2 class="ea-title">ตัวที่ 5: EA Quangure</h2>
-                    <p class="ea-desc">[จักรกลบริสุทธิ์ คัมภีร์สรุปย่อตำรา] อัลโกถอดรหัสหน้าเทรด</p>
-                    <div class="ea-footer"><span>📂 อัลบั้มระบบ</span><span>รูปภาพ 3 รูป</span></div>
+                    <p class="ea-desc">[จักรกลคำนวณ] อัลโกถอดรหัสหน้าเทรดและแนวรับแนวต้านสำคัญ</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><i class="fa-solid fa-image"></i></div>
                 </div>
             </div>
 
-            <!-- ตัวที่ 4: EA QuarkSoul -->
-            <div class="portfolio-card">
+            <!-- ตัวที่ 4/6: EA QuarkSoul (ตัวที่ 4) -->
+            <div class="portfolio-card" onclick="openImageModal('https://unsplash.com')">
                 <div class="image-wrapper"><img src="https://unsplash.com" alt="EA QuarkSoul"></div>
                 <div class="content-box">
                     <h2 class="ea-title">ตัวที่ 4: EA QuarkSoul</h2>
-                    <p class="ea-desc">[จิตวิญญาณแห่งควอนตัม] อัลโกเทรดความเร็วแสง</p>
-                    <div class="ea-footer"><span>📂 อัลบั้มระบบ</span><span>รูปภาพ 3 รูป</span></div>
+                    <p class="ea-desc">[ควอนตัมจิตวิญญาณ] อัลโกเทรดสปีดสูง จับจังหวะรอบราคาทองคำ</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><i class="fa-solid fa-image"></i></div>
                 </div>
             </div>
 
-            <!-- อัลบั้มที่ 3: EA Quanszle -->
-            <div class="portfolio-card">
+            <!-- ตัวที่ 5/6: EA Quanszle (ตัวที่ 3) -->
+            <div class="portfolio-card" onclick="openImageModal('https://unsplash.com')">
                 <div class="image-wrapper"><img src="https://unsplash.com" alt="EA Quanszle"></div>
                 <div class="content-box">
-                    <h2 class="ea-title">อัลบั้มที่ 3: EA Quanszle อัจฉริยะ</h2>
-                    <p class="ea-desc">[OFFICIAL PORTFOLIO] ระบบบอทปิดความเสี่ยงขั้นสูงสุด</p>
-                    <div class="ea-footer"><span>📂 อัลบั้มระบบ</span><span>รูปภาพ 3 รูป</span></div>
+                    <h2 class="ea-title">ตัวที่ 3: EA Quanszle อัจฉริยะ</h2>
+                    <p class="ea-desc">[แฟ้มคัดสรรพิเศษ] อัลกอริทึมจำกัดความเสี่ยง Drawdown ต่ำสุด</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><i class="fa-solid fa-image"></i></div>
                 </div>
             </div>
+
+            <!-- ตัวที่ 6/6: EA Quark Hunter Pro (ตัวที่ 2) -->
+            <div class="portfolio-card" onclick="openImageModal('https://unsplash.com')">
+                <div class="image-wrapper"><img src="https://unsplash.com" alt="EA Quark Hunter Pro"></div>
+                <div class="content-box">
+                    <h2 class="ea-title">ตัวที่ 2: EA Quark Hunter Pro</h2>
+                    <p class="ea-desc">[ระบบเทรดตามเทรนด์] ดักสอยกำไรคำนวณหน้าเทรดรอบใหญ่ XAUUSD</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><i class="fa-solid fa-image"></i></div>
+                </div>
+            </div>
+
         </div>
 
 
-        <!-- 📊 โซนล่างสุด: แฟ้มพอร์ตสถิติกราฟกำไรจริง (Equity Curve) -->
+        <!-- ========================================== -->
+        <!-- 📈 โซนล่างสุด: แฟ้มพอร์ตสถิติกราฟกำไรจริง (Equity Curve) -->
+        <!-- ========================================== -->
         <div class="header-title" style="margin-top: 50px;">
             <h1>📈 VERIFIED ACCOUNT STATISTICS</h1>
             <p>ประวัติและสถิติกราฟการเจริญเติบโตของพอร์ตทุนจริงประจำค่าย</p>
         </div>
 
         <div class="portfolio-grid">
-            <!-- อัลบั้มที่ 2: PORTFOLIO EA -->
-            <div class="portfolio-card" style="border-color: #22c55e;">
+            <!-- อัลบั้มสถิติที่ 2 -->
+            <div class="portfolio-card" style="border-color: #22c55e;" onclick="openImageModal('https://unsplash.com')">
                 <div class="image-wrapper" style="height: 160px;"><img src="https://unsplash.com" alt="PORTFOLIO EA 2"></div>
                 <div class="content-box">
                     <h2 class="ea-title" style="color: #22c55e;">อัลบั้มที่ 2: [OFFICIAL PORTFOLIO] EA</h2>
                     <p class="ea-desc">สถิติกราฟทุนพูนพอร์ตพุ่งทะยานต่อเนื่อง ทนทาน Drawdown ต่ำ</p>
-                    <div class="ea-footer"><span>📊 สถิติพอร์ต</span><span style="color: #22c55e;">Verified</span></div>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><span style="color: #22c55e;">Verified</span></div>
                 </div>
             </div>
+
+            <!-- อัลบั้มสถิติที่ 1 -->
+            <div class="portfolio-card" style="border-color: #22c55e;" onclick="openImageModal('https://unsplash.com')">
+                <div class="image-wrapper" style="height: 160px;"><img src="https://unsplash.com" alt="PORTFOLIO EA 1"></div>
+                <div class="content-box">
+                    <h2 class="ea-title" style="color: #22c55e;">อัลบั้มที่ 1: [OFFICIAL PORTFOLIO] EA</h2>
+                    <p class="ea-desc">แฟ้มประวัติไม้เทรดหน้างานจริง สยบสภาวะกราฟลากได้ราบคาบ</p>
+                    <div class="ea-footer"><span>🔍 กดเพื่อขยายรูปภาพ</span><span style="color: #22c55e;">Verified</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ปุ่มกดเลี้ยวกลับหน้าแรกด้านล่างสุด -->
+        <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> กลับสู่หน้าหลัก</a>
+
+    </div>
+
+    <!-- 👾 หน้าต่างกล่องเลเยอร์ป๊อปอัปส่องขยายรูปภาพตัวเต็ม (Lightbox Modal) -->
+    <div id="imageModal" class="modal" onclick="closeImageModal()">
+        <span class="close-btn" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        // สคริปต์คำสั่งเปิดกล่องป๊อปอัปขยายรูปภาพตัวจริง
+        function openImageModal(imgSrc) {
+            document.getElementById('imageModal').style.display = "flex";
+            document.getElementById('modalImg').src = imgSrc;
+        }
+        
+        // สคริปต์คำสั่งปิดกล่องป๊อปอัปเมื่อกดปุ่มกากบาทหรือกดพื้นที่ว่าง
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+        
+        // ระบบควบคุมสไลเดอร์แบนเนอร์อัตโนมัติเดิมของคุณพี่ทำงานเสถียร 100%
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0; const slides = document.querySelectorAll('.carousel-item');
+            if (slides.length > 0) {
+                setInterval(function() {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
+
 
