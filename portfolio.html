@@ -171,7 +171,44 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- 👾 หน้าต่างป๊อปอัปขยายรูปภาพโฉมใหม่ [มีปุ่มกดเลื่อนซ้าย-ขวา] -->
+        <!-- 📈 โซนล่างสุด: แฟ้มพอร์ตสถิติกราฟกำไรจริง (Verified Account Statistics) [เวอร์ชันกดเลื่อนสไลด์ดูรูปพอร์ตบวกฟ้ายับ 3 รูปตัวจริง] -->
+        <!-- ========================================== -->
+        <div class="header-title" style="margin-top: 60px; text-align: center; border-top: 1px solid #1e293b; padding-top: 40px; margin-bottom: 48px;">
+            <h1 style="font-size: 2rem; font-weight: 900; color: #22c55e; letter-spacing: 0.05em;">📈 VERIFIED ACCOUNT STATISTICS</h1>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 8px;">ประวัติและสถิติกราฟการเจริญเติบโตของพอร์ตทุนจริงประจำค่าย (คลิกเพื่อกดเปิดดูอัลบั้มรูปภาพหลักฐานหน้างาน 3 รูปได้เลยครับ)</p>
+        </div>
+
+        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 48px; width: 100%; clear: both;">
+            
+            <!-- พอร์ตที่ 1: สถิติมหาขลังฝั่ง TMGM (ปั๊มวอลลุ่มสะสม 1.5 Lot บาลานซ์รวมกำไรบวกฟ้า) -->
+            <div class="portfolio-card" style="border-color: #22c55e; background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openSliderModal(['images/stat_tmgm_15lot.png', 'images/chart-26oct-1.png', 'images/chart-26oct-2.png'])">
+                <div class="image-wrapper" style="width: 100%; height: 160px; background-color: #0f172a; overflow: hidden; position: relative; border-bottom: 1px solid #334155;"><img src="images/stat_tmgm_15lot.png" alt="TMGM Performance 1.5 Lot" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://githubusercontent.com'"></div>
+                <div class="content-box" style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <h2 class="ea-title" style="color: #22c55e; font-size: 1.05rem; font-weight: 800; margin-bottom: 6px;">อัลบั้มที่ 1: [TMGM PERFORMANCE] EA</h2>
+                    <p class="ea-desc" style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px;">สถิติตัวเลขหน้างานปั๊มยอดออเดอร์ 30 ไม้ ปั่นวอลลุ่มสะสม 1.5 Lot วันเดียว พอร์ตรวมบาลานซ์ดีดพุ่งทะยานจบกำไรบวกฟ้าสวยงาม</p>
+                    <div class="ea-footer" style="font-size: 0.75rem; color: #f59e0b; font-weight: bold; border-top: 1px dashed #334155; padding-top: 10px; display: flex; justify-content: space-between; align-items: center;"><span>🔍 กดส่องดูอัลบั้ม (3 รูป)</span><span style="color: #22c55e;"><i class="fa-solid fa-square-check"></i> Verified</span></div>
+                </div>
+            </div>
+
+            <!-- พอร์ตที่ 2: สถิติปลายไส้ 3 ไม้ฝั่ง KVB (กำไรลอยลำพุ่งทะลุ +487.55$ คืนทุนพริบตาเดียวเกรดกองทุน) -->
+            <div class="portfolio-card" style="border-color: #22c55e; background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openSliderModal(['images/stat_midterm_487usd.png', 'images/stat_midterm_228usd.png', 'images/stat_retest_123usd.png'])">
+                <div class="image-wrapper" style="width: 100%; height: 160px; background-color: #0f172a; overflow: hidden; position: relative; border-bottom: 1px solid #334155;"><img src="images/stat_midterm_487usd.png" alt="KVB Performance 487USD" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://githubusercontent.com'"></div>
+                <div class="content-box" style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <h2 class="ea-title" style="color: #22c55e; font-size: 1.05rem; font-weight: 800; margin-bottom: 6px;">อัลบั้มที่ 2: [KVB INSTITUTIONAL] EA</h2>
+                    <p class="ea-desc" style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px;">หลักฐานคาตาคริสตัลคลีน ดักกดจิ้มได้จุดปลายไส้เทียน 3 ไม้เน้น ๆ กวาดกำไรลอยลำพุ่งกระฉูดสะสมทะลุ +487.55$ ดันยอด Equity ทะลุเหนือทุนในพริบตา</p>
+                    <div class="ea-footer" style="font-size: 0.75rem; color: #f59e0b; font-weight: bold; border-top: 1px dashed #334155; padding-top: 10px; display: flex; justify-content: space-between; align-items: center;"><span>🔍 กดส่องดูอัลบั้ม (3 รูป)</span><span style="color: #22c55e;"><i class="fa-solid fa-square-check"></i> Verified</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ปุ่มกดเลี้ยวกลับหน้าแรกด้านล่างสุด (สไตล์สัดส่วนคมสวย) -->
+        <a href="index.html" class="btn-back" style="display: block; width: 200px; margin: 40px auto 0; text-align: center; background-color: #f59e0b; color: #0f172a; padding: 12px; border-radius: 6px; font-weight: bold; text-decoration: none; transition: background-color 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.2); clear: both;"><i class="fa-solid fa-arrow-left"></i> กลับสู่หน้าหลัก</a>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 👾 หน้าต่างป๊อปอัปขยายรูปภาพสากล [มีปุ่มกดเลื่อนลูกศร ซ้าย-ขวา ยิงตรงท่อ 100%] -->
     <!-- ========================================== -->
     <div id="imageModal" class="modal" style="display: none; position: fixed; z-index: 999999; inset: 0; background-color: rgba(15, 23, 42, 0.95); align-items: center; justify-content: center; padding: 20px;">
         <span class="close-btn" onclick="closeImageModal()" style="position: absolute; top: 20px; right: 30px; color: #ffffff; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 1000000;">&times;</span>
@@ -193,7 +230,7 @@
         let currentImgImages = [];
         let currentImgIndex = 0;
 
-        // ฟังก์ชันสั่งเปิดกล่องสไลเดอร์และรับอาร์เรย์รูปภาพ 3 รูป
+        // ฟังก์ชันเปิดกล่องสไลเดอร์และรับอาร์เรย์รูปภาพ
         function openSliderModal(imagesArray) {
             currentImgImages = imagesArray;
             currentImgIndex = 0;
@@ -201,7 +238,7 @@
             document.getElementById('imageModal').style.display = "flex";
         }
 
-        // ฟังก์ชันอัปเดตรูปภาพปัจจุบันและตัวเลขบอกหน้าอัลบั้ม
+        // ฟังก์ชันอัปเดตรูปภาพปัจจุบันในหน้าต่างสไลด์
         function updateModalImage() {
             document.getElementById('modalImg').src = currentImgImages[currentImgIndex];
             document.getElementById('imageCounter').innerText = `รูปภาพที่ ${currentImgIndex + 1} จาก ${currentImgImages.length}`;
@@ -209,7 +246,7 @@
 
         // ฟังก์ชันกดเลื่อนขวา (รูปถัดไป)
         function nextImage(event) {
-            event.stopPropagation(); // กันป๊อปอัปปิดออโต้
+            event.stopPropagation();
             currentImgIndex = (currentImgIndex + 1) % currentImgImages.length;
             updateModalImage();
         }
@@ -225,20 +262,9 @@
         function closeImageModal() {
             document.getElementById('imageModal').style.display = "none";
         }
-        
-        // ระบบควบคุมสไลเดอร์แบนเนอร์อัตโนมัติหน้าแรกทำงานปกติ
-        document.addEventListener("DOMContentLoaded", function () {
-            let currentSlide = 0; const slides = document.querySelectorAll('.carousel-item');
-            if (slides.length > 0) {
-                setInterval(function() {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                }, 5000);
-            }
-        });
     </script>
 </body>
 </html>
+
 
 
